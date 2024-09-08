@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .container {
+            width: 210mm; /* A4 width */
+            padding: 10mm 15mm; /* Padding around the content */
+            box-sizing: border-box;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10mm; /* Space between header and body content */
+        }
+        .logo {
+            width: 100px; /* Adjust the size as needed */
+            margin-right: 82mm; /* Space between the logo and other content */
+        }
+        .header-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .header-text .title {
+            font-size: 11pt; /* Adjust the size as needed */
+            font-weight: bold;
+        }
+        .header-text .sub-title {
+            margin: 0;
+            font-size: 11pt; 
+        }
+        .content-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10mm; /* Space between sections */
+        }
+        .sold-by, .billing-address {
+            width: 40%; /* Adjust width to fit side by side */
+        }
+        .sold-by h3, .billing-address h3 {
+            margin: 0;
+            font-size: 11pt; /* Adjust the size as needed */
+            font-weight: bold;
+        }
+        .sold-by p, .billing-address p {
+            margin: 0;
+            margin-bottom: 5px; /* Adjust the spacing as needed */
+            font-size: 11pt; /* Adjust the size as needed */
+        }
+        .bold-text {
+            font-weight: bold;
+        }
+        .single-line {
+            white-space: nowrap; /* Ensures content stays on a single line */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: -7mm; /* Space between content and table */
+            font-size:11pt;                 
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 2px; /* Adjust padding for smaller space */
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .total-row {
+            font-weight: bold;
+        }
+        .amount-in-words, .signature-section {
+            margin-top: 10mm; /* Space before and after sections */
+        }
+        .signature-section {
+    text-align: right;
+    font-weight: bold;
+    padding-right: 3mm; /* Reduce padding if needed */
+    margin-top: 2mm; /* Adjust top margin for spacing */
+}
+
+.signature-section p {
+    margin: 0; /* Remove default margin */
+    font-size: 11pt; /* Adjust font size for better fitting */
+}
+
+.signature-section img {
+    width: 80px; /* Further reduced width */
+    height: auto;
+    margin-top: 2mm; /* Adjust margin above image */
+}
+        .tax-reverse-charge {
+            text-align: left;
+            margin-top: 1mm; /* Space between table and text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="invoice">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="/images/amazonIN_logo.jpg"  class="logo">
+            <div class="header-text">
+                <span class="title">Tax Invoice/Bill of Supply/Cash Memo</span>
+                <p class="sub-title">(Original for Recipient)</p>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-container">
+            <!-- Sold By Section -->
+            <div class="sold-by">
+                <h3>Sold By:</h3>
+                <p>Varasiddhi Silk Exports</p>
+                <p>75, 3rd Cross, Lalbagh Road</p>
+                <p>BENGALURU, KARNATAKA, 560027</p>
+                <p>IN</p>
+                <br><br>
+                <p class="single-line"><span class="bold-text">PAN No:</span> AACFV3325K</p>
+                <p><span class="bold-text">GST Registration No:</span> 29AACFV3325K1ZY</p>
+                <br><br>
+                <br><br>
+                <br><br>
+                <br><br>
+                <p class="single-line"><span class="bold-text">Order Number:</span> 403-3225714-7676307</p>
+                <p><span class="bold-text">Order Date:</span> 28.10.2019</p>
+            </div>
+
+            <!-- Billing Address Section -->
+            <div class="billing-address">
+                <h3>Billing Address:</h3>
+                <p>Madhu B</p>
+                <p>Eurofins IT Solutions India Pvt Ltd</p>
+                <p>1st Floor, Maruti Platinum, Lakshminarayana Pura, AECS Layout</p>
+                <p>BENGALURU, KARNATAKA, 560037</p>
+                <p>IN</p>
+                <p><span class="bold-text">State/UT Code:</span> 29</p>
+                <br>
+                <div>
+                    <h3>Shipping Address:</h3>
+                    <p>Madhu B</p>
+                    <p>Madhu B</p>
+                    <p>Eurofins IT Solutions India Pvt Ltd</p>
+                    <p>1st Floor, Maruti Platinum, Lakshminarayana Pura, AECS Layout</p>
+                    <p>BENGALURU, KARNATAKA, 560037</p>
+                    <p>IN</p>
+                    <p class="single-line"><span class="bold-text">State/UT Code:</span> 29</p>
+                    <p class="single-line"><span class="bold-text">Place of supply:</span> KARNATAKA</p>
+                    <p class="single-line"><span class="bold-text">Place of delivery:</span> KARNATAKA</p>
+                    <p class="single-line"><span class="bold-text">Invoice Number:</span> IN-761</p>
+                    <p class="single-line"><span class="bold-text">Invoice Details:</span> KA-310565025-1920</p>
+                    <p class="single-line"><span class="bold-text">Invoice Date:</span> 28.10.2019</p>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Description</th>
+                    <th>Unit Price</th>
+                    <th>Qty</th>
+                    <th>Net Amount</th>
+                    <th>Tax Rate</th>
+                    <th>Tax Type</th>
+                    <th>Tax Amount</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Item -->
+                <tr>
+                    <td>1</td>
+                    <td>Varasiddhi Silks Men's Formal Shirt (SH-05-42, Navy Blue, 42) B07KGF3KW8 (SH-05-42)</td>
+                    <td>₹538.10</td>
+                    <td>1</td>
+                    <td>₹538.10</td>
+                    <td>2.5%</td>
+                    <td>CGST SGST</td>
+                    <td>₹13.45 ₹13.45</td>
+                    <td>₹565.00</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Shipping Charges</td>
+                    <td>₹30.96</td>
+                    <td></td>
+                    <td>₹30.96</td>
+                    <td>2.5%</td>
+                    <td>CGST SGST</td>
+                    <td>₹0.77 ₹0.77</td>
+                    <td>₹32.50</td>
+                </tr>
+                
+                <tr>
+                    <td>2</td>
+                    <td>Varasiddhi Silks Men's Formal Shirt (SH-05-40, Navy Blue, 40) | B07KGCS2X7 (SH-05-40)</td>
+                    <td>₹538.10</td>
+                    <td>1</td>
+                    <td>₹538.10</td>
+                    <td>2.5%</td>
+                    <td>CGST SGST</td>
+                    <td>₹13.45 ₹13.45</td>
+                    <td>₹565.00</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Shipping Charges</td>
+                    <td>₹30.96</td>
+                    <td></td>
+                    <td>₹30.96</td>
+                    <td>2.5%</td>
+                    <td>CGST SGST</td>
+                    <td>₹0.77 ₹0.77</td>
+                    <td>₹32.50</td>
+                </tr>
+                <!-- Add more items as needed -->
+                <!-- Total Row -->
+                <tr class="total-row">
+                    <td colspan="7" style="text-align: left;">Total:</td>
+                    <td style="text-align: right; background-color: #f2f2f2;">₹56.88</td>
+                    <td rowspan="1" style="text-align: right; background-color: #f2f2f2;">₹1,195.00</td> <!-- Total Amount here -->
+                </tr>
+                <tr>
+                    <td colspan="9" style="text-align: left; font-size: 11pt;">
+                        <strong>Total Amount in Words:</strong><br>
+                        <strong>One Thousand One Hundred And Ninety-Five Only</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="9" style="text-align: right;">
+                        <div class="signature-section">
+                            <p>For Varasiddhi Silk Exports:</p>
+                            <img src="/images/set.jpg">
+                            <p>Authorized Signatory</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="tax-reverse-charge">Whether tax is payable under reverse charge - No</p>
+
+        <button onclick="generatePDF()">Download PDF</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        const { jsPDF } = window.jspdf;
+
+        function generatePDF() {
+            const invoice = document.getElementById('invoice');
+            html2canvas(invoice, { scale: 2 }).then((canvas) => { // Increase scale for better quality
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4'); // Set to A4 size
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 295; // A4 height in mm
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                pdf.save('invoice.pdf');
+            });
+        }
+    </script>
+</body>
+</html>
